@@ -43,7 +43,7 @@ class Record:
         self.phones = [
             phone for phone in self.phones if phone.value != rem_phone]
 
-    def edit_phone(self, old_phone, new_phone):
+    def edit_phone(self, old_phone: str, new_phone: str):
 
         for phone in self.phones:
             if phone.value == old_phone:
@@ -53,7 +53,7 @@ class Record:
 
         raise ValueError(f"Номер {old_phone} не знайдено")
 
-    def find_phone(self, f_phone):
+    def find_phone(self, f_phone: str):
 
         for phone in self.phones:
             if phone.value == f_phone:
@@ -64,13 +64,14 @@ class Record:
 
 class AddressBook(UserDict):
 
-    def add_record(self, record):
+    def add_record(self, record: Record):
         self.data[record.name.value] = record
 
     def find(self, name: str):
         return self.data.get(name)
 
-    def delete(self, name):
+    def delete(self, name: str):
+
         if name in self.data:
             del self.data[name]
 
